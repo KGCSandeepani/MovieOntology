@@ -1,0 +1,1444 @@
+@prefix : <http://www.movie.com/Ontologies/movie.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.movie.com/Ontologies/movie.owl> .
+
+<http://www.movie.com/Ontologies/movie.owl> rdf:type owl:Ontology ;
+                                            
+                                            rdfs:comment "The Movie ontology discribes various movies based on movie types." .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://www.movie.com/Ontologies/movie.owl#connectedWith
+
+:connectedWith rdf:type owl:ObjectProperty ,
+                        owl:SymmetricProperty ;
+               
+               rdfs:range :Movie ;
+               
+               rdfs:domain :Movie .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasActor
+
+:hasActor rdf:type owl:ObjectProperty ;
+          
+          rdfs:range :Actor ;
+          
+          rdfs:domain :Movie ;
+          
+          rdfs:subPropertyOf :hasCrew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasAgeLevel
+
+:hasAgeLevel rdf:type owl:FunctionalProperty ,
+                      owl:ObjectProperty ;
+             
+             rdfs:range :AgeValuePartition ;
+             
+             rdfs:domain :MovieGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasArtDirector
+
+:hasArtDirector rdf:type owl:ObjectProperty ;
+                
+                rdfs:range :ArtDirector ;
+                
+                rdfs:domain :Movie ;
+                
+                rdfs:subPropertyOf :hasCrew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasColorInfo
+
+:hasColorInfo rdf:type owl:FunctionalProperty ,
+                       owl:ObjectProperty ;
+              
+              rdfs:range :ColorInfo ;
+              
+              rdfs:domain :Movie ;
+              
+              rdfs:subPropertyOf :hasPresentationInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasCostumeDesigner
+
+:hasCostumeDesigner rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:range :CostumeDesigner ;
+                    
+                    rdfs:domain :Movie ;
+                    
+                    rdfs:subPropertyOf :hasCrew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasCrew
+
+:hasCrew rdf:type owl:ObjectProperty ;
+         
+         rdfs:range :Crew ;
+         
+         rdfs:domain :Movie ;
+         
+         owl:inverseOf :isCrewOf .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasDirector
+
+:hasDirector rdf:type owl:ObjectProperty ;
+             
+             rdfs:range :Director ;
+             
+             rdfs:domain :Movie ;
+             
+             rdfs:subPropertyOf :hasCrew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasDirectorOfPhotography
+
+:hasDirectorOfPhotography rdf:type owl:ObjectProperty ;
+                          
+                          rdfs:range :DirectorOfPhotography ;
+                          
+                          rdfs:domain :Movie ;
+                          
+                          rdfs:subPropertyOf :hasCrew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasEditor
+
+:hasEditor rdf:type owl:ObjectProperty ;
+           
+           rdfs:range :Editor ;
+           
+           rdfs:domain :Movie ;
+           
+           rdfs:subPropertyOf :hasCrew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasGenre
+
+:hasGenre rdf:type owl:ObjectProperty ;
+          
+          rdfs:domain :Movie ;
+          
+          rdfs:range :MovieGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasLanguageInfo
+
+:hasLanguageInfo rdf:type owl:FunctionalProperty ,
+                          owl:ObjectProperty ;
+                 
+                 rdfs:range :LanguageInfo ;
+                 
+                 rdfs:domain :Movie ;
+                 
+                 rdfs:subPropertyOf :hasPresentationInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasMusicSupervisor
+
+:hasMusicSupervisor rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:domain :Movie ;
+                    
+                    rdfs:range :MusicSupervisor ;
+                    
+                    rdfs:subPropertyOf :hasCrew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasPresentationInfo
+
+:hasPresentationInfo rdf:type owl:FunctionalProperty ,
+                              owl:ObjectProperty ;
+                     
+                     rdfs:domain :Movie ;
+                     
+                     rdfs:range :PresentationInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasProducer
+
+:hasProducer rdf:type owl:ObjectProperty ;
+             
+             rdfs:domain :Movie ;
+             
+             rdfs:range :Producer ;
+             
+             rdfs:subPropertyOf :hasCrew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasProductionDesigner
+
+:hasProductionDesigner rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:domain :Movie ;
+                       
+                       rdfs:range :ProductionDesigner ;
+                       
+                       rdfs:subPropertyOf :hasCrew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasScreenWriter
+
+:hasScreenWriter rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:domain :Movie ;
+                 
+                 rdfs:range :ScreenWriter ;
+                 
+                 rdfs:subPropertyOf :hasCrew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasSoundInfo
+
+:hasSoundInfo rdf:type owl:FunctionalProperty ,
+                       owl:ObjectProperty ;
+              
+              rdfs:domain :Movie ;
+              
+              rdfs:range :SoundInfo ;
+              
+              rdfs:subPropertyOf :hasPresentationInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasTerritory
+
+:hasTerritory rdf:type owl:ObjectProperty ,
+                       owl:TransitiveProperty ;
+              
+              rdfs:range :Country ;
+              
+              rdfs:domain :Movie .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#isActorOf
+
+:isActorOf rdf:type owl:ObjectProperty ;
+           
+           rdfs:domain :Actor ;
+           
+           rdfs:range :Movie ;
+           
+           owl:inverseOf :hasActor ;
+           
+           rdfs:subPropertyOf :isCrewOf .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#isCrewOf
+
+:isCrewOf rdf:type owl:ObjectProperty ;
+          
+          rdfs:domain :Crew ;
+          
+          rdfs:range :Movie .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#isDirectorOf
+
+:isDirectorOf rdf:type owl:ObjectProperty ;
+              
+              rdfs:domain :Director ;
+              
+              rdfs:range :Movie ;
+              
+              owl:inverseOf :hasDirector ;
+              
+              rdfs:subPropertyOf :isCrewOf .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#isProducerOf
+
+:isProducerOf rdf:type owl:ObjectProperty ;
+              
+              rdfs:range :Movie ;
+              
+              rdfs:domain :Producer ;
+              
+              owl:inverseOf :hasProducer ;
+              
+              rdfs:subPropertyOf :isCrewOf .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://www.movie.com/Ontologies/movie.owl#MovieInfo
+
+:MovieInfo rdf:type owl:DatatypeProperty .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#createdYear
+
+:createdYear rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             
+             rdfs:subPropertyOf :MovieInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasAward
+
+:hasAward rdf:type owl:DatatypeProperty ;
+          
+          rdfs:subPropertyOf :MovieInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasBirthDay
+
+:hasBirthDay rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             
+             rdfs:subPropertyOf :personalInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#hasHeight
+
+:hasHeight rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           
+           rdfs:subPropertyOf :personalInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#industryCategory
+
+:industryCategory rdf:type owl:DatatypeProperty ,
+                           owl:FunctionalProperty ;
+                  
+                  rdfs:subPropertyOf :MovieInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#personalInfo
+
+:personalInfo rdf:type owl:DatatypeProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Above18
+
+:Above18 rdf:type owl:Class ;
+         
+         rdfs:subClassOf :AgeValuePartition ;
+         
+         owl:disjointWith :Below18 .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#ActionComedyMovie
+
+:ActionComedyMovie rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :NamedMovie ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasGenre ;
+                                     owl:someValuesFrom :ActionGenre
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasGenre ;
+                                     owl:someValuesFrom :ComedyGenre
+                                   ] ;
+                   
+                   rdfs:comment "A movie that incorporates humorous actions within the action, using the exciting events in the story for laughs." .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#ActionGenre
+
+:ActionGenre rdf:type owl:Class ;
+             
+             rdfs:subClassOf :MovieGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Actor
+
+:Actor rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Crew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#AdventureGenre
+
+:AdventureGenre rdf:type owl:Class ;
+                
+                rdfs:subClassOf :ActionGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Afric
+
+:Afric rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Country .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#AgeValuePartition
+
+:AgeValuePartition rdf:type owl:Class ;
+                   
+                   owl:equivalentClass [ rdf:type owl:Class ;
+                                         owl:unionOf ( :Above18
+                                                       :Below18
+                                                     )
+                                       ] ;
+                   
+                   rdfs:subClassOf :ValuePartition .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#America
+
+:America rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Country .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#AnimationGenre
+
+:AnimationGenre rdf:type owl:Class ;
+                
+                rdfs:subClassOf :MovieGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#ArtDirector
+
+:ArtDirector rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Crew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Asia
+
+:Asia rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Country .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#AutraliaAndNewZealand
+
+:AutraliaAndNewZealand rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :Oceania .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Below18
+
+:Below18 rdf:type owl:Class ;
+         
+         rdfs:subClassOf :AgeValuePartition .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Below18Movie
+
+:Below18Movie rdf:type owl:Class ;
+              
+              owl:equivalentClass [ rdf:type owl:Class ;
+                                    owl:intersectionOf ( :Movie
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :hasGenre ;
+                                                           owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                owl:intersectionOf ( :MovieGenre
+                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                       owl:onProperty :hasAgeLevel ;
+                                                                                                       owl:someValuesFrom :Below18
+                                                                                                     ]
+                                                                                                   )
+                                                                              ]
+                                                         ]
+                                                       )
+                                  ] .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Caribbean
+
+:Caribbean rdf:type owl:Class ;
+           
+           rdfs:subClassOf :America .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#CentralAmerica
+
+:CentralAmerica rdf:type owl:Class ;
+                
+                rdfs:subClassOf :LatinAmerica ;
+                
+                owl:disjointWith :SouthAmerica .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#CentralAsia
+
+:CentralAsia rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Asia .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#ColorInfo
+
+:ColorInfo rdf:type owl:Class ;
+           
+           rdfs:subClassOf :PresentationInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#ComedyGenre
+
+:ComedyGenre rdf:type owl:Class ;
+             
+             rdfs:subClassOf :MovieGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#ComedyMovie
+
+:ComedyMovie rdf:type owl:Class ;
+             
+             owl:equivalentClass [ rdf:type owl:Class ;
+                                   owl:intersectionOf ( :Movie
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :hasGenre ;
+                                                          owl:someValuesFrom :ComedyGenre
+                                                        ]
+                                                      )
+                                 ] .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#CostumeDesigner
+
+:CostumeDesigner rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Crew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Country
+
+:Country rdf:type owl:Class ;
+         
+         owl:disjointWith :Crew ,
+                          :Movie ,
+                          :MovieGenre ,
+                          :PresentationInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Crew
+
+:Crew rdf:type owl:Class ;
+      
+      owl:disjointWith :Movie ,
+                       :MovieGenre ,
+                       :PresentationInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#CrimeGenre
+
+:CrimeGenre rdf:type owl:Class ;
+            
+            rdfs:subClassOf :MovieGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Director
+
+:Director rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Crew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#DirectorOfPhotography
+
+:DirectorOfPhotography rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :Crew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#DisasterGenre
+
+:DisasterGenre rdf:type owl:Class ;
+               
+               rdfs:subClassOf :ActionGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#DramaGenre
+
+:DramaGenre rdf:type owl:Class ;
+            
+            rdfs:subClassOf :MovieGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#EasternAfric
+
+:EasternAfric rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Afric .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#EasternAsia
+
+:EasternAsia rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Asia .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#EasternEurope
+
+:EasternEurope rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Europe .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Editor
+
+:Editor rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Crew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Europe
+
+:Europe rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Country .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#ExperimentalGenre
+
+:ExperimentalGenre rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :MovieGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#FantasyGenre
+
+:FantasyGenre rdf:type owl:Class ;
+              
+              rdfs:subClassOf :MovieGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#GhostGenre
+
+:GhostGenre rdf:type owl:Class ;
+            
+            rdfs:subClassOf :HorrorGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#HistoricalGenre
+
+:HistoricalGenre rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :MovieGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#HorrorGenre
+
+:HorrorGenre rdf:type owl:Class ;
+             
+             rdfs:subClassOf :MovieGenre ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasAgeLevel ;
+                               owl:someValuesFrom :Above18
+                             ] .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#InterestingMovie
+
+:InterestingMovie rdf:type owl:Class ;
+                  
+                  owl:equivalentClass [ rdf:type owl:Class ;
+                                        owl:intersectionOf ( :Movie
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :hasGenre ;
+                                                               owl:onClass :MovieGenre ;
+                                                               owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger
+                                                             ]
+                                                           )
+                                      ] .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#KidsCartoonMovie
+
+:KidsCartoonMovie rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :NamedMovie ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasGenre ;
+                                    owl:someValuesFrom :TraditionalAnimationGenre
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasGenre ;
+                                    owl:someValuesFrom :FantasyGenre
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasGenre ;
+                                    owl:allValuesFrom [ rdf:type owl:Class ;
+                                                        owl:unionOf ( :FantasyGenre
+                                                                      :TraditionalAnimationGenre
+                                                                    )
+                                                      ]
+                                  ] ;
+                  
+                  rdfs:comment "A movie that can classify as fantacy as well as animation genre." .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#LanguageInfo
+
+:LanguageInfo rdf:type owl:Class ;
+              
+              rdfs:subClassOf :PresentationInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#LatinAmerica
+
+:LatinAmerica rdf:type owl:Class ;
+              
+              rdfs:subClassOf :America .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Malanesia
+
+:Malanesia rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Oceania .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Micronesia
+
+:Micronesia rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Oceania .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#MiddleAfric
+
+:MiddleAfric rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Afric .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#MilitaryActionGenre
+
+:MilitaryActionGenre rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :ActionGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#ModernAnimationGenre
+
+:ModernAnimationGenre rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :AnimationGenre ;
+                      
+                      owl:disjointWith :TraditionalAnimationGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#MonsterGenre
+
+:MonsterGenre rdf:type owl:Class ;
+              
+              rdfs:subClassOf :HorrorGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Movie
+
+:Movie rdf:type owl:Class ;
+       
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasTerritory ;
+                         owl:someValuesFrom :Country
+                       ] ;
+       
+       owl:disjointWith :MovieGenre ,
+                        :PresentationInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#MovieGenre
+
+:MovieGenre rdf:type owl:Class ;
+            
+            owl:disjointWith :PresentationInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#MusicSupervisor
+
+:MusicSupervisor rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Crew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#NamedMovie
+
+:NamedMovie rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Movie .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#NorthernAfric
+
+:NorthernAfric rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Afric .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#NorthernAmerica
+
+:NorthernAmerica rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :America .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#NorthernEurope
+
+:NorthernEurope rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Europe .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Oceania
+
+:Oceania rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Country .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#OldMovie
+
+:OldMovie rdf:type owl:Class ;
+          
+          owl:equivalentClass [ rdf:type owl:Class ;
+                                owl:intersectionOf ( :Movie
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :createdYear ;
+                                                       owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                            owl:onDatatype xsd:integer ;
+                                                                            owl:withRestrictions ( [ xsd:maxExclusive 2000
+                                                                                                   ]
+                                                                                                 )
+                                                                          ]
+                                                     ]
+                                                   )
+                              ] .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Polynesia
+
+:Polynesia rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Oceania .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#PresentationInfo
+
+:PresentationInfo rdf:type owl:Class .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Producer
+
+:Producer rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Crew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#ProductionDesigner
+
+:ProductionDesigner rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Crew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#RomComMovie
+
+:RomComMovie rdf:type owl:Class ;
+             
+             rdfs:subClassOf :NamedMovie ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasGenre ;
+                               owl:someValuesFrom :ComedyGenre
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasGenre ;
+                               owl:someValuesFrom :RomanceGenre
+                             ] ;
+             
+             rdfs:comment "A movie that can classify as comedy as well as romantic genre." .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#RomanceGenre
+
+:RomanceGenre rdf:type owl:Class ;
+              
+              rdfs:subClassOf :MovieGenre ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasAgeLevel ;
+                                owl:someValuesFrom :Above18
+                              ] .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#ScienceFictionGenre
+
+:ScienceFictionGenre rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :MovieGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#ScreenWriter
+
+:ScreenWriter rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Crew .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#SoundInfo
+
+:SoundInfo rdf:type owl:Class ;
+           
+           rdfs:subClassOf :PresentationInfo .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#SouthAmerica
+
+:SouthAmerica rdf:type owl:Class ;
+              
+              rdfs:subClassOf :LatinAmerica .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#SoutheasternAsia
+
+:SoutheasternAsia rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Asia .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#SouthernAfric
+
+:SouthernAfric rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Afric .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#SouthernAsia
+
+:SouthernAsia rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Asia .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#SouthernEurope
+
+:SouthernEurope rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Europe .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#SuperHeroGenre
+
+:SuperHeroGenre rdf:type owl:Class ;
+                
+                rdfs:subClassOf :ActionGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#SuperHumanMovie
+
+:SuperHumanMovie rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :NamedMovie ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasGenre ;
+                                   owl:someValuesFrom :FantasyGenre
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasGenre ;
+                                   owl:someValuesFrom :CrimeGenre
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasGenre ;
+                                   owl:someValuesFrom :SuperHeroGenre
+                                 ] ;
+                 
+                 rdfs:comment "A movie that can classify as fantacy, crime as well as superhero genre." .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#ThrillerGenre
+
+:ThrillerGenre rdf:type owl:Class ;
+               
+               rdfs:subClassOf :MovieGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#TraditionalAnimationGenre
+
+:TraditionalAnimationGenre rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf :AnimationGenre ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :hasAgeLevel ;
+                                             owl:someValuesFrom :Below18
+                                           ] .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#TraditionalKidsMovie
+
+:TraditionalKidsMovie rdf:type owl:Class ;
+                      
+                      owl:equivalentClass [ rdf:type owl:Class ;
+                                            owl:intersectionOf ( :Movie
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :hasGenre ;
+                                                                   owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                       owl:unionOf ( :AnimationGenre
+                                                                                                     :FantasyGenre
+                                                                                                   )
+                                                                                     ]
+                                                                 ]
+                                                               )
+                                          ] .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#ValuePartition
+
+:ValuePartition rdf:type owl:Class .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#VampireGenre
+
+:VampireGenre rdf:type owl:Class ;
+              
+              rdfs:subClassOf :HorrorGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#WarMovie
+
+:WarMovie rdf:type owl:Class ;
+          
+          rdfs:subClassOf :NamedMovie ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasGenre ;
+                            owl:someValuesFrom :CrimeGenre
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasGenre ;
+                            owl:someValuesFrom :DisasterGenre
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasGenre ;
+                            owl:someValuesFrom :AdventureGenre
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasGenre ;
+                            owl:someValuesFrom :MilitaryActionGenre
+                          ] ;
+          
+          rdfs:comment "A movie that can classify as adventure, military action, crime as well as disaster genre." .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#WerewolfGenre
+
+:WerewolfGenre rdf:type owl:Class ;
+               
+               rdfs:subClassOf :HorrorGenre .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#WesternAfric
+
+:WesternAfric rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Afric .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#WesternAsia
+
+:WesternAsia rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Asia .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#WesternEurope
+
+:WesternEurope rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Europe .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#WesternGenre
+
+:WesternGenre rdf:type owl:Class ;
+              
+              rdfs:subClassOf :MovieGenre .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://www.movie.com/Ontologies/movie.owl#3Idiots
+
+<http://www.movie.com/Ontologies/movie.owl#3Idiots> rdf:type :Movie ,
+                                                             owl:NamedIndividual ;
+                                                    
+                                                    :createdYear 2009 ;
+                                                    
+                                                    :industryCategory "Bollywood"^^xsd:string ;
+                                                    
+                                                    :hasTerritory :India .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#BrotherBear
+
+:BrotherBear rdf:type :Movie ,
+                      owl:NamedIndividual ;
+             
+             :createdYear 2003 .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Dhanush
+
+:Dhanush rdf:type :Crew ,
+                  owl:NamedIndividual ;
+         
+         :isActorOf :Mari2 ;
+         
+         :isProducerOf :Mari2 .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#India
+
+:India rdf:type :SouthernAsia ,
+                owl:NamedIndividual .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Italian
+
+:Italian rdf:type :LanguageInfo ,
+                  owl:NamedIndividual .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#JamesCameron
+
+:JamesCameron rdf:type :Crew ,
+                       owl:NamedIndividual ;
+              
+              :isDirectorOf :Titanic ;
+              
+              :isProducerOf :Titanic .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#LeonardoDiCaprio
+
+:LeonardoDiCaprio rdf:type :Crew ,
+                           owl:NamedIndividual ;
+                  
+                  :hasHeight "1.83 m"^^xsd:string ;
+                  
+                  :hasBirthDay "1974-11-11T00:00:00Z"^^xsd:dateTime ;
+                  
+                  :isActorOf :Titanic .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Mari1
+
+:Mari1 rdf:type :Movie ,
+                owl:NamedIndividual .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Mari2
+
+:Mari2 rdf:type :Movie ,
+                owl:NamedIndividual ;
+       
+       :createdYear 2018 ;
+       
+       :industryCategory "Kollywood"^^xsd:string ;
+       
+       :hasProducer :Dhanush ;
+       
+       :hasActor :Dhanush ;
+       
+       :connectedWith :Mari1 .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Oliver&Company
+
+<http://www.movie.com/Ontologies/movie.owl#Oliver&Company> rdf:type :Movie ,
+                                                                    owl:NamedIndividual ;
+                                                           
+                                                           :createdYear 1988 .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#TheRescuersDownUnder
+
+:TheRescuersDownUnder rdf:type :Movie ,
+                               owl:NamedIndividual ;
+                      
+                      :createdYear 1990 .
+
+
+
+###  http://www.movie.com/Ontologies/movie.owl#Titanic
+
+:Titanic rdf:type :Movie ,
+                  owl:NamedIndividual ;
+         
+         :createdYear 1997 ;
+         
+         :industryCategory "Hollywood"^^xsd:string ;
+         
+         :hasAward """People'sChoiceAward
+GoldenGlobeAward
+AcademyAward"""^^xsd:string ;
+         
+         :hasLanguageInfo :Italian ;
+         
+         :hasProducer :JamesCameron ;
+         
+         :hasDirector :JamesCameron ;
+         
+         :hasActor :LeonardoDiCaprio .
+
+
+
+
+
+#################################################################
+#
+#    General axioms
+#
+#################################################################
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ColorInfo
+                :LanguageInfo
+                :SoundInfo
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AutraliaAndNewZealand
+                :Malanesia
+                :Micronesia
+                :Polynesia
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :EasternEurope
+                :NorthernEurope
+                :SouthernEurope
+                :WesternEurope
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CentralAsia
+                :EasternAsia
+                :SoutheasternAsia
+                :SouthernAsia
+                :WesternAsia
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ActionComedyMovie
+                :KidsCartoonMovie
+                :RomComMovie
+                :SuperHumanMovie
+                :WarMovie
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :GhostGenre
+                :MonsterGenre
+                :VampireGenre
+                :WerewolfGenre
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :EasternAfric
+                :MiddleAfric
+                :NorthernAfric
+                :SouthernAfric
+                :WesternAfric
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Afric
+                :America
+                :Asia
+                :Europe
+                :Oceania
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AdventureGenre
+                :DisasterGenre
+                :MilitaryActionGenre
+                :SuperHeroGenre
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ActionGenre
+                :AnimationGenre
+                :ComedyGenre
+                :CrimeGenre
+                :DramaGenre
+                :ExperimentalGenre
+                :FantasyGenre
+                :HistoricalGenre
+                :HorrorGenre
+                :RomanceGenre
+                :ScienceFictionGenre
+                :ThrillerGenre
+                :WesternGenre
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Caribbean
+                :LatinAmerica
+                :NorthernAmerica
+              )
+] .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+
